@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Art Assets/3x5Grid.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Fonts/KennyPixel10.tres" type="DynamicFont" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+font_data = ExtResource( 2 )
 
 [node name="MainScene" type="Node"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 1, 0.945098, 0.662745, 1 )
@@ -12,12 +18,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( -115, -77 )
-color = Color( 0.133333, 0.345098, 0.458824, 1 )
-polygon = PoolVector2Array( 132, 112, 132, 98, 146, 98, 146, 112 )
-
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Grid" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -31,8 +32,101 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Lines" type="Node" parent="Grid"]
+
+[node name="LineA12" type="Line2D" parent="Grid/Lines"]
 scale = Vector2( 0.294676, 0.591568 )
 points = PoolVector2Array( 54.2968, 59.1647, 54.2968, 35.4988 )
-width = 7.0
+width = 6.8
 default_color = Color( 0.772549, 0.188235, 0.384314, 1 )
+
+[node name="LineB12" type="Line2D" parent="Grid/Lines"]
+position = Vector2( 16, 0 )
+scale = Vector2( 0.294676, 0.591568 )
+points = PoolVector2Array( 54.2968, 59.1647, 54.2968, 35.4988 )
+width = 6.8
+default_color = Color( 0.772549, 0.188235, 0.384314, 1 )
+
+[node name="Line1AB" type="Line2D" parent="Grid/Lines"]
+position = Vector2( 6, 9 )
+scale = Vector2( 0.294676, 0.591568 )
+points = PoolVector2Array( 37.3291, 18.5946, 84.8388, 18.5946 )
+width = 3.4
+default_color = Color( 0.772549, 0.188235, 0.384314, 1 )
+
+[node name="Line2AB" type="Line2D" parent="Grid/Lines"]
+position = Vector2( 6, 25 )
+scale = Vector2( 0.294676, 0.591568 )
+points = PoolVector2Array( 37.3291, 18.5946, 84.8388, 18.5946 )
+width = 3.4
+default_color = Color( 0.772549, 0.188235, 0.384314, 1 )
+
+[node name="LineC12" type="Line2D" parent="Grid/Lines"]
+position = Vector2( 32.0038, 0.0227089 )
+scale = Vector2( 0.294676, 0.591568 )
+points = PoolVector2Array( 54.2968, 59.1647, 54.2968, 35.4988 )
+width = 6.8
+default_color = Color( 0.772549, 0.188235, 0.384314, 1 )
+
+[node name="Line1BC" type="Line2D" parent="Grid/Lines"]
+position = Vector2( 22.0038, 9.02271 )
+scale = Vector2( 0.294676, 0.591568 )
+points = PoolVector2Array( 37.3291, 18.5946, 84.8388, 18.5946 )
+width = 3.4
+default_color = Color( 0.772549, 0.188235, 0.384314, 1 )
+
+[node name="Line2BC" type="Line2D" parent="Grid/Lines"]
+position = Vector2( 22, 25 )
+scale = Vector2( 0.294676, 0.591568 )
+points = PoolVector2Array( 37.3291, 18.5946, 84.8388, 18.5946 )
+width = 3.4
+default_color = Color( 0.772549, 0.188235, 0.384314, 1 )
+
+[node name="Squares" type="Node" parent="Grid"]
+
+[node name="Square1A" type="Polygon2D" parent="Grid/Squares"]
+position = Vector2( -115, -77 )
+color = Color( 0.133333, 0.345098, 0.458824, 1 )
+polygon = PoolVector2Array( 132, 112, 132, 98, 146, 98, 146, 112 )
+
+[node name="Square1B" type="Polygon2D" parent="Grid/Squares"]
+position = Vector2( -99, -77 )
+color = Color( 0.133333, 0.345098, 0.458824, 1 )
+polygon = PoolVector2Array( 132, 112, 132, 98, 146, 98, 146, 112 )
+
+[node name="GridLabels" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="A" type="Label" parent="GridLabels"]
+margin_left = 15.0
+margin_top = 7.0
+margin_right = 67.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "A            B            C            D"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="A2" type="Label" parent="GridLabels"]
+margin_left = 6.0
+margin_top = 15.0
+margin_right = 10.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/line_spacing = 7
+text = "1
+2
+3
+4
+5
+6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
