@@ -86,12 +86,12 @@ default_color = Color( 0.772549, 0.188235, 0.384314, 1 )
 
 [node name="Square1A" type="Polygon2D" parent="Grid/Squares"]
 position = Vector2( -115, -77 )
-color = Color( 0.133333, 0.345098, 0.458824, 1 )
+color = Color( 0.772549, 0.188235, 0.384314, 1 )
 polygon = PoolVector2Array( 132, 112, 132, 98, 146, 98, 146, 112 )
 
 [node name="Square1B" type="Polygon2D" parent="Grid/Squares"]
 position = Vector2( -99, -77 )
-color = Color( 0.133333, 0.345098, 0.458824, 1 )
+color = Color( 0.772549, 0.188235, 0.384314, 1 )
 polygon = PoolVector2Array( 132, 112, 132, 98, 146, 98, 146, 112 )
 
 [node name="GridLabels" type="Control" parent="."]
