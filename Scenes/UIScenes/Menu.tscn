@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Art Assets/Border2.png" type="Texture" id=1]
 [ext_resource path="res://Art Assets/Border1.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Fonts/KennyPixel12.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Fonts/KennyPixel10.tres" type="DynamicFont" id=11]
 [ext_resource path="res://Scenes/UIScenes/QuitButton.gd" type="Script" id=12]
+[ext_resource path="res://Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -40,8 +41,9 @@ animations = [ {
 [sub_resource type="StreamTexture" id=4]
 load_path = "res://.import/LargePurpleButton.png-0af7c800986b028c76327bad0ef57a1f.stex"
 
-[sub_resource type="StreamTexture" id=5]
-load_path = "res://.import/SmallOrangeButton.png-dc57225af8de123eaf8c94ef81a6a14f.stex"
+[sub_resource type="DynamicFont" id=5]
+size = 10
+font_data = ExtResource( 13 )
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -87,7 +89,7 @@ frames = SubResource( 2 )
 animation = "PinkPlayerPunch"
 
 [node name="BluePlayerPunch" type="AnimatedSprite" parent="."]
-position = Vector2( 56.363, 98.7222 )
+position = Vector2( 55.363, 98.7222 )
 frames = SubResource( 3 )
 animation = "BluePlayerPunch"
 frame = 1
@@ -143,10 +145,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -19.6034
-margin_top = -0.0199203
-margin_right = 20.3966
-margin_bottom = 8.98008
+margin_left = -21.069
+margin_top = 0.294136
+margin_right = 18.931
+margin_bottom = 9.29414
 custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 1, 0.945098, 0.662745, 1 )
 text = "Join Game"
@@ -155,56 +157,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OtherButtons" type="HBoxContainer" parent="."]
-anchor_left = 0.587
-anchor_top = 0.626
-anchor_right = 0.752
-anchor_bottom = 0.662
-margin_left = -32.4775
-margin_top = -1.99686
-margin_right = 6.3225
-margin_bottom = 2.68313
-rect_min_size = Vector2( 52, 0 )
-custom_constants/separation = 27
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AboutButton" type="TextureButton" parent="OtherButtons"]
-margin_bottom = 9.0
+[node name="QuitButton" type="TextureButton" parent="."]
+anchor_right = 0.312
+anchor_bottom = 0.075
+margin_left = 40.6445
+margin_top = 74.3539
+margin_right = 40.6845
+margin_bottom = 74.3539
 texture_normal = ExtResource( 4 )
 expand = true
 stretch_mode = 2
-
-[node name="Label" type="Label" parent="OtherButtons/AboutButton"]
-margin_left = 3.0
-margin_right = 23.0
-margin_bottom = 10.0
-custom_fonts/font = ExtResource( 11 )
-custom_colors/font_color = Color( 0.0705882, 0.054902, 0.137255, 1 )
-text = "About"
-align = 1
-valign = 1
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="QuitButton" type="TextureButton" parent="OtherButtons"]
-margin_left = 27.0
-margin_right = 27.0
-margin_bottom = 9.0
-texture_normal = SubResource( 5 )
-expand = true
-stretch_mode = 2
-script = ExtResource( 12 )
-
-[node name="Label" type="Label" parent="OtherButtons/QuitButton"]
-anchor_top = 0.556
-anchor_bottom = 0.556
-margin_left = 3.0448
-margin_top = -5.004
-margin_right = 23.0448
-margin_bottom = 4.996
+[node name="Label" type="Label" parent="QuitButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 1.0
+rect_min_size = Vector2( 20, 10 )
 custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 0.0705882, 0.054902, 0.137255, 1 )
 text = "Quit"
@@ -214,5 +186,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="OtherButtons/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="pressed" from="OtherButtons/QuitButton" to="OtherButtons/QuitButton" method="_on_QuitButton_pressed"]
+[node name="AboutButton" type="TextureButton" parent="."]
+anchor_right = 0.312
+anchor_bottom = 0.075
+margin_left = 14.0291
+margin_top = 73.5748
+margin_right = 14.0691
+margin_bottom = 73.5748
+rect_min_size = Vector2( 20, 8 )
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="AboutButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.528061
+margin_right = 0.528061
+margin_bottom = 1.0
+rect_min_size = Vector2( 20, 10 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.0705882, 0.054902, 0.137255, 1 )
+text = "About"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
