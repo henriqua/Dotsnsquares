@@ -1,28 +1,218 @@
-[gd_scene format=2]
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Art Assets/Border2.png" type="Texture" id=1]
+[ext_resource path="res://Art Assets/Border1.png" type="Texture" id=2]
+[ext_resource path="res://Art Assets/LargePurpleButton.png" type="Texture" id=3]
+[ext_resource path="res://Art Assets/SmallOrangeButton.png" type="Texture" id=4]
+[ext_resource path="res://Art Assets/PinkPlayerPunch1.png" type="Texture" id=5]
+[ext_resource path="res://Art Assets/PinkPlayerPunch2.png" type="Texture" id=6]
+[ext_resource path="res://Art Assets/BluePlayerPunch2.png" type="Texture" id=7]
+[ext_resource path="res://Art Assets/BluePlayerPunch1.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/UIScenes/Menu.gd" type="Script" id=9]
+[ext_resource path="res://Fonts/KennyPixel12.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Fonts/KennyPixel10.tres" type="DynamicFont" id=11]
+[ext_resource path="res://Scenes/UIScenes/QuitButton.gd" type="Script" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "BorderAnimation",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "PinkPlayerPunch",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "BluePlayerPunch",
+"speed": 5.0
+} ]
+
+[sub_resource type="StreamTexture" id=4]
+load_path = "res://.import/LargePurpleButton.png-0af7c800986b028c76327bad0ef57a1f.stex"
+
+[sub_resource type="StreamTexture" id=5]
+load_path = "res://.import/SmallOrangeButton.png-dc57225af8de123eaf8c94ef81a6a14f.stex"
 
 [node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 0.945098, 0.662745, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -31.3277
+margin_top = 20.0
+margin_right = 31.6723
+margin_bottom = 31.0
+rect_min_size = Vector2( 20, 0 )
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 1, 0.945098, 0.662745, 1 )
+text = "DOTSNSQUARES"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonList" type="VBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Border" type="AnimatedSprite" parent="."]
+position = Vector2( 40.0579, 60.0606 )
+frames = SubResource( 1 )
+animation = "BorderAnimation"
+frame = 1
 
-[node name="Button" type="Button" parent="ButtonList"]
-margin_right = 12.0
-margin_bottom = 20.0
+[node name="PinkPlayerPunch" type="AnimatedSprite" parent="."]
+position = Vector2( 24.363, 98.7222 )
+frames = SubResource( 2 )
+animation = "PinkPlayerPunch"
+
+[node name="BluePlayerPunch" type="AnimatedSprite" parent="."]
+position = Vector2( 56.363, 98.7222 )
+frames = SubResource( 3 )
+animation = "BluePlayerPunch"
+frame = 1
+
+[node name="PlayButtons" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -26.0
+margin_top = -17.0
+margin_right = 26.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 52, 20 )
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HostGameButton" type="TextureButton" parent="PlayButtons"]
+margin_right = 52.0
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="PlayButtons/HostGameButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -19.9981
+margin_top = 0.236496
+margin_right = 20.0019
+margin_bottom = 9.2365
+custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color = Color( 1, 0.945098, 0.662745, 1 )
+text = "Host Game"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JoinGameButton" type="TextureButton" parent="PlayButtons"]
+margin_top = 15.0
+margin_right = 52.0
+margin_bottom = 15.0
+texture_normal = SubResource( 4 )
+expand = true
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="PlayButtons/JoinGameButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -19.6034
+margin_top = -0.0199203
+margin_right = 20.3966
+margin_bottom = 8.98008
+custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color = Color( 1, 0.945098, 0.662745, 1 )
+text = "Join Game"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OtherButtons" type="HBoxContainer" parent="."]
+anchor_left = 0.587
+anchor_top = 0.626
+anchor_right = 0.752
+anchor_bottom = 0.662
+margin_left = -32.4775
+margin_top = -1.99686
+margin_right = 6.3225
+margin_bottom = 2.68313
+rect_min_size = Vector2( 52, 0 )
+custom_constants/separation = 27
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AboutButton" type="TextureButton" parent="OtherButtons"]
+margin_bottom = 9.0
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="OtherButtons/AboutButton"]
+margin_left = 3.0
+margin_right = 23.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color = Color( 0.0705882, 0.054902, 0.137255, 1 )
+text = "About"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="TextureButton" parent="OtherButtons"]
+margin_left = 27.0
+margin_right = 27.0
+margin_bottom = 9.0
+texture_normal = SubResource( 5 )
+expand = true
+stretch_mode = 2
+script = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="OtherButtons/QuitButton"]
+anchor_top = 0.556
+anchor_bottom = 0.556
+margin_left = 3.0448
+margin_top = -5.004
+margin_right = 23.0448
+margin_bottom = 4.996
+custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color = Color( 0.0705882, 0.054902, 0.137255, 1 )
+text = "Quit"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="OtherButtons/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="OtherButtons/QuitButton" to="OtherButtons/QuitButton" method="_on_QuitButton_pressed"]
