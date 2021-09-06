@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 
 const ACCELERATION = 100
-const MAX_SPEED = 25
-const FRICTION = 200
+const MAX_SPEED = 40
+const FRICTION = 500
 
 var velocity = Vector2.ZERO
 
@@ -30,3 +30,9 @@ func _physics_process(delta):
 		$AnimatedSprite.play("Idle_Right")
 	elif Input.is_action_just_released("ui_left"):
 		$AnimatedSprite.play("Idle_Left")
+
+
+
+
+func _on_Area2D_body_entered(body):
+	queue_free()
