@@ -3,7 +3,7 @@
 [ext_resource path="res://Art Assets/PurpleThrowingStar.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Actors/Enemy.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Spin"
 length = 0.7
 loop = true
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "values": [ 0.0, 180.0, 360.0 ]
 }
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 radius = 3.0
 
 [node name="Enemy" type="RigidBody2D"]
@@ -35,10 +35,10 @@ offset = Vector2( -0.49874, 0.431745 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Spin"
-anims/Spin = SubResource( 2 )
+anims/Spin = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )

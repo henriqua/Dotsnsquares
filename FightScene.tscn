@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Art Assets/3x5Grid.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Actors/Player1.tscn" type="PackedScene" id=2]
@@ -6,8 +6,19 @@
 [ext_resource path="res://Scenes/Actors/Ninja.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Actors/Enemy.tscn" type="PackedScene" id=5]
 
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://Fonts/Kenney Pixel.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+font_data = SubResource( 2 )
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1, 1 )
+
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 22.7682, 27.4347, 0, 0, 0, 0, 40.3733, 27.4347, 0, 0, 0, 0, 56.1055, 27.4347, 0, 0, 0, 0, 56.6673, 43.7288, 0, 0, 0, 0, 40.9351, 44.2906, 0, 0, 0, 0, 22.9554, 43.7288, 0, 0, 0, 0, 23.5173, 60.0228, 0, 0, 0, 0, 40.9351, 60.0228, 0, 0, 0, 0, 56.1055, 60.0228, 0, 0, 0, 0, 56.1055, 75.1932, 0, 0, 0, 0, 39.2495, 75.7551, 0, 0, 0, 0, 22.9554, 75.7551, 0, 0, 0, 0, 24.0792, 92.611, 0, 0, 0, 0, 40.3733, 93.1729, 0, 0, 0, 0, 56.6673, 92.611, 0, 0, 0, 0, 60.975, 92.611, 0, 0, 0, 0, 60.4131, 23.5016, 0, 0, 0, 0, 22.7682, 23.5016, 0, 0, 0, 0, 22.7682, 27.4347 )
+}
 
 [node name="MainScene" type="Node"]
 script = ExtResource( 3 )
@@ -31,6 +42,20 @@ margin_top = -42.0
 margin_right = 26.0
 margin_bottom = 42.0
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyCounter" type="Label" parent="."]
+light_mask = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -14.0
+margin_right = 42.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Enemies:"
+valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -225,6 +250,13 @@ frame = 1
 [node name="NinjaThrowTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="EnemyPath" type="Path2D" parent="."]
+curve = SubResource( 4 )
+
+[node name="StarCatcher" type="PathFollow2D" parent="EnemyPath"]
+position = Vector2( 23.5173, 27.4347 )
+rotation = 4.86523e-07
 
 [connection signal="timeout" from="NinjaThrowTimer" to="." method="_on_NinjaThrowTimer_timeout"]
 
