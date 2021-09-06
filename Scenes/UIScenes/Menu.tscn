@@ -15,6 +15,7 @@
 [ext_resource path="res://Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://Art Assets/SmallOrangeButton2.png" type="Texture" id=14]
 [ext_resource path="res://Art Assets/LargePurpleButton2.png" type="Texture" id=15]
+[ext_resource path="res://Scenes/UIScenes/StartGameButton.gd" type="Script" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -40,10 +41,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="StreamTexture" id=4]
-load_path = "res://.import/LargePurpleButton.png-0af7c800986b028c76327bad0ef57a1f.stex"
-
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 10
 font_data = ExtResource( 13 )
 
@@ -96,69 +94,35 @@ frames = SubResource( 3 )
 animation = "BluePlayerPunch"
 frame = 1
 
-[node name="HostGameButton" type="TextureButton" parent="."]
+[node name="StartGameButton" type="TextureButton" parent="."]
 anchor_left = 0.175
 anchor_top = 0.376
 anchor_right = 0.825
-anchor_bottom = 0.423
-margin_left = -9.53674e-07
+anchor_bottom = 0.43
 margin_top = -2.12
-margin_bottom = -7.76
+margin_bottom = 0.399998
 action_mode = 0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 15 )
 expand = true
 stretch_mode = 2
+script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="HostGameButton"]
+[node name="Label" type="Label" parent="StartGameButton"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -19.9981
-margin_top = -0.0771484
-margin_right = 20.0019
-margin_bottom = 8.92286
+margin_left = -19.3708
+margin_top = -4.31134
+margin_right = 20.6292
+margin_bottom = 4.68867
 custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 1, 0.945098, 0.662745, 1 )
-text = "Host Game"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="JoinGameButton" type="TextureButton" parent="."]
-anchor_left = 0.204
-anchor_top = 0.5
-anchor_right = 0.831
-anchor_bottom = 0.554
-margin_left = -1.84953
-margin_top = -1.78827
-margin_right = -0.00952911
-margin_bottom = -8.26827
-texture_normal = SubResource( 4 )
-texture_pressed = ExtResource( 15 )
-expand = true
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="JoinGameButton"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -21.069
-margin_top = 0.294136
-margin_right = 18.931
-margin_bottom = 9.29414
-custom_fonts/font = ExtResource( 11 )
-custom_colors/font_color = Color( 1, 0.945098, 0.662745, 1 )
-text = "Join Game"
+text = "Start Game"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -217,7 +181,7 @@ margin_left = 0.528061
 margin_right = 0.528061
 margin_bottom = 1.0
 rect_min_size = Vector2( 20, 10 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.0705882, 0.054902, 0.137255, 1 )
 text = "About"
 align = 1
@@ -226,4 +190,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="button_up" from="StartGameButton" to="StartGameButton" method="_on_StartGameButton_button_up"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
