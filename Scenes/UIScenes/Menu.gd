@@ -7,6 +7,7 @@ func _ready():
 	$Border.play()
 	$PinkPlayerPunch.play()
 	$BluePlayerPunch.play()
+	$ThrowingStar/AnimationPlayer.play("Spin")
 
 
 

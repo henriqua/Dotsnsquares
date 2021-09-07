@@ -1,13 +1,11 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Art Assets/Border2.png" type="Texture" id=1]
 [ext_resource path="res://Art Assets/Border1.png" type="Texture" id=2]
 [ext_resource path="res://Art Assets/LargePurpleButton.png" type="Texture" id=3]
 [ext_resource path="res://Art Assets/SmallOrangeButton.png" type="Texture" id=4]
-[ext_resource path="res://Art Assets/PinkPlayerPunch1.png" type="Texture" id=5]
-[ext_resource path="res://Art Assets/PinkPlayerPunch2.png" type="Texture" id=6]
-[ext_resource path="res://Art Assets/BluePlayerPunch2.png" type="Texture" id=7]
-[ext_resource path="res://Art Assets/BluePlayerPunch1.png" type="Texture" id=8]
+[ext_resource path="res://Art Assets/PinkBoxWalk.png" type="Texture" id=5]
+[ext_resource path="res://Art Assets/Ninja.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/UIScenes/Menu.gd" type="Script" id=9]
 [ext_resource path="res://Fonts/KennyPixel12.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Fonts/KennyPixel10.tres" type="DynamicFont" id=11]
@@ -25,25 +23,64 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 5 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "PinkPlayerPunch",
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 7 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 7 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "BluePlayerPunch",
-"speed": 5.0
+"speed": 2.0
 } ]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=9]
 size = 10
 font_data = ExtResource( 13 )
+
+[sub_resource type="StreamTexture" id=10]
+load_path = "res://.import/PurpleThrowingStar.png-9852bf9bc3e8c270f535e49204dfde1d.stex"
+
+[sub_resource type="Animation" id=11]
+resource_name = "Spin"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -84,23 +121,24 @@ animation = "BorderAnimation"
 frame = 1
 
 [node name="PinkPlayerPunch" type="AnimatedSprite" parent="."]
-position = Vector2( 24.363, 98.7222 )
-frames = SubResource( 2 )
+position = Vector2( 24.363, 99.7222 )
+frames = SubResource( 5 )
 animation = "PinkPlayerPunch"
 
 [node name="BluePlayerPunch" type="AnimatedSprite" parent="."]
 position = Vector2( 55.363, 98.7222 )
-frames = SubResource( 3 )
+frames = SubResource( 8 )
 animation = "BluePlayerPunch"
-frame = 1
 
 [node name="StartGameButton" type="TextureButton" parent="."]
 anchor_left = 0.175
 anchor_top = 0.376
 anchor_right = 0.825
 anchor_bottom = 0.43
-margin_top = -2.12
-margin_bottom = 0.399998
+margin_left = 0.112106
+margin_top = 1.91569
+margin_right = 0.112106
+margin_bottom = 4.43569
 action_mode = 0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 15 )
@@ -131,10 +169,10 @@ __meta__ = {
 [node name="QuitButton" type="TextureButton" parent="."]
 anchor_right = 0.312
 anchor_bottom = 0.075
-margin_left = 40.6445
-margin_top = 74.3539
-margin_right = 40.6845
-margin_bottom = 74.3539
+margin_left = 40.5324
+margin_top = 65.3857
+margin_right = 40.5724
+margin_bottom = 65.3857
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 14 )
 expand = true
@@ -161,10 +199,10 @@ __meta__ = {
 [node name="AboutButton" type="TextureButton" parent="."]
 anchor_right = 0.312
 anchor_bottom = 0.075
-margin_left = 14.0291
-margin_top = 73.5748
-margin_right = 14.0691
-margin_bottom = 73.5748
+margin_left = 13.917
+margin_top = 64.6066
+margin_right = 13.957
+margin_bottom = 64.6066
 rect_min_size = Vector2( 20, 8 )
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 14 )
@@ -181,7 +219,7 @@ margin_left = 0.528061
 margin_right = 0.528061
 margin_bottom = 1.0
 rect_min_size = Vector2( 20, 10 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.0705882, 0.054902, 0.137255, 1 )
 text = "About"
 align = 1
@@ -189,6 +227,15 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ThrowingStar" type="Sprite" parent="."]
+position = Vector2( 39.2392, 98.9826 )
+rotation = 4.60449
+texture = SubResource( 10 )
+offset = Vector2( -0.49874, 0.431745 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ThrowingStar"]
+anims/Spin = SubResource( 11 )
 
 [connection signal="button_up" from="StartGameButton" to="StartGameButton" method="_on_StartGameButton_button_up"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
