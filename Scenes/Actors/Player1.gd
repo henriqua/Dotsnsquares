@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-signal player_died
-
 const ACCELERATION = 150
 const MAX_SPEED = 150
 const FRICTION = 10000
@@ -54,7 +52,7 @@ func _on_Area2D_body_entered(body):
 
 
 func _on_AnimatedSprite2_animation_finished():
-	emit_signal("player_died")
+	PlayerData.emit_signal("player_died")
 	queue_free()
 	get_tree().reload_current_scene()
 

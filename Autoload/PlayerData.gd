@@ -1,5 +1,6 @@
 extends Node
 
+signal player_died
 var score = 0 setget set_score
 var high_score = 0 setget set_high_score, get_high_score
 

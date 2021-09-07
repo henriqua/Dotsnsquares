@@ -8,6 +8,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
 
-func _on_Area2D_area_entered(area):
+func _on_Area2D_area_entered(_area):
 	PlayerData.another_one_bites_the_dust()
 	queue_free()

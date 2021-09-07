@@ -1,6 +1,7 @@
 extends Label
 
 var dead_enemies = -1
+onready var player = load("res://Scenes/Actors/Player1.gd").new()
 
 func _ready() -> void:
 	PlayerData.connect("enemy_killed", self, "update_interface")
