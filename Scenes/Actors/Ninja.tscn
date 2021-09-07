@@ -10,50 +10,51 @@ region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
-region = Rect2( 48, 0, 16, 16 )
+region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 16 )
+region = Rect2( 48, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
-region = Rect2( 16, 0, 16, 16 )
+region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 16, 16 )
+region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 16 )
+region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 1 ), SubResource( 2 ) ],
-"loop": true,
-"name": "ThrowRight",
-"speed": 1.0
-}, {
-"frames": [ SubResource( 3 ), SubResource( 4 ) ],
-"loop": true,
-"name": "ThrowLeft",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ) ],
+"frames": [ SubResource( 1 ) ],
 "loop": true,
 "name": "IdleRight",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 6 ) ],
+"frames": [ SubResource( 2 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "ThrowRight",
+"speed": 2.0
+}, {
+"frames": [ SubResource( 4 ) ],
 "loop": true,
 "name": "IdleLeft",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "ThrowLeft",
 "speed": 5.0
 } ]
 
 [node name="Ninja" type="AnimatedSprite"]
 frames = SubResource( 7 )
 animation = "ThrowRight"
+frame = 1
 playing = true
 script = ExtResource( 2 )
 enemy = ExtResource( 3 )
