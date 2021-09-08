@@ -105,7 +105,6 @@ extents = Vector2( 5, 6 )
 
 [sub_resource type="Animation" id=19]
 resource_name = "Attack"
-length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
@@ -113,10 +112,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -20.0, 340.0 ]
+"values": [ -120.0, 240.0 ]
 }
 
 [node name="Player1" type="KinematicBody2D"]
@@ -141,15 +140,20 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, -1 )
+z_index = 200
 shape = SubResource( 18 )
 
 [node name="Mace" parent="." instance=ExtResource( 4 )]
 
 [node name="MaceSprite" parent="Mace" index="0"]
-rotation = 5.93412
+rotation = 4.18879
 
 [node name="AnimationPlayer" parent="Mace/MaceSprite" index="0"]
 anims/Attack = SubResource( 19 )
+
+[node name="CollisionShape2D" parent="Mace/MaceSprite/Area2D" index="0"]
+position = Vector2( 2.05556, -17.3429 )
+z_index = 200
 
 [connection signal="animation_finished" from="AnimatedSprite2" to="." method="_on_AnimatedSprite2_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -27,7 +27,7 @@ tracks/0/keys = {
 radius = 3.0
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 2.70358
+radius = 3.15326
 
 [node name="Enemy" type="RigidBody2D"]
 collision_layer = 4
